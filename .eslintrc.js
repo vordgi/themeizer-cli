@@ -21,6 +21,7 @@ module.exports = {
 		'linebreak-style': [0, 'unix'],
 		quotes: [0, 'single'],
 		'no-tabs': 0,
+		'@typescript-eslint/no-var-requires': 0,
 		semi: [0, 'always'],
 		camelcase: 0,
 		'@typescript-eslint/explicit-module-boundary-types': 0,

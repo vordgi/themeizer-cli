@@ -5,6 +5,34 @@ import fs from 'fs/promises';
 import path from 'path';
 import Themeizer from 'themeizer/dist/server/Wrapper';
 import ThemeizerPlugin from 'themeizer/dist/webpack/plugin';
+import arg from 'arg';
+
+const args = arg({
+	'--help': Boolean,
+	'--config': String,
+    '--url': String,
+    '--headers': String,
+    '--theme': String,
+
+	'-h': '--help',
+	'-c': '--config',
+    '--u': '--url',
+    '--h': '--headers',
+    '--t': '--theme'
+});
+
+const help = `
+    '--help', '-h' {Boolean} - help
+    '--config', '-c' {String} - configuration file path
+    '--url', '-u' {String} - url to load and read colors
+    '--headers', '-h' {String} - necessary headers for getting colors
+    '--theme', '-t' {String} - theme from which to check and replace colors
+`
+
+if (args['--help']) {
+    console.log(help);
+    process.exit();
+}
 
 const from10To16 = (n: number) => {
     const number16 = n.toString(16);
@@ -20,9 +48,19 @@ const hexToRegExpRow = (hex: string) => {
 }
 
 (async () => {
-    const configPath = path.join(process.cwd(), 'config');
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const config = require(configPath);
+    let config;
+    if (args['--config']) {
+        const configPath = path.join(process.cwd(), args['--config']);
+        config = require(configPath);
+    } else if (args['--url'] && args['--theme'] && args['--headers']) {
+        config = {
+            url: args['--url'],
+            theme: args['--theme'],
+            headers: JSON.parse(args['--headers'])
+        };
+    } else {
+        throw new Error('Please, provide configuration options. Use "--help" option for more information');
+    }
     // eslint-disable-next-line no-new
     new ThemeizerPlugin(config);
 
@@ -39,8 +77,6 @@ const hexToRegExpRow = (hex: string) => {
 
     glob("**/*.+(css|sass|scss|styl)", { cwd: process.cwd(), absolute: true, realpath: true, ignore: [] }, async (_er, files) => {
         const filesCount = files.length;
-        console.log(files);
-
         for (let i = 0; i < filesCount; i++) {
             const file = files[i];
             let fileContent = await fs.readFile(file, 'utf-8');
