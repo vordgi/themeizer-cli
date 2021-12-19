@@ -1,0 +1,44 @@
+{
+  "name": "themeizer-cli",
+  "version": "0.0.1",
+  "description": "CLI for themeizer",
+  "main": "./dist/src/index.js",
+  "bin": "./dist/src/index.js",
+  "devDependencies": {
+    "@types/glob": "7.2.0",
+    "@types/node": "14.14.21",
+    "@typescript-eslint/eslint-plugin": "4.32.0",
+    "@typescript-eslint/parser": "4.32.0",
+    "eslint": "7.14.0",
+    "eslint-config-standard": "16.0.3",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "5.1.1",
+    "husky": "7.0.2",
+    "ts-node": "9.1.1",
+    "typescript": "4.4.4"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc --build",
+    "lint:fix": "eslint ./**/*.ts --fix",
+    "lint": "eslint ./**/*.ts"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "themeizer": "0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vordgi/themeizer-cli.git"
+  },
+  "author": {
+    "name": "Savelyev Alexander",
+    "email": "vordgi1@gmail.com",
+    "url": "https://github.com/vordgi/"
+  },
+  "keywords": []
+}

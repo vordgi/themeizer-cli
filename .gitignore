@@ -1,0 +1,11 @@
+# build
+dist
+*.tgz
+
+# packages
+node_modules
+yarn.lock
+yarn-error.log
+
+# config
+config.json
