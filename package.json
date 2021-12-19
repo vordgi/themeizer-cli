@@ -1,9 +1,9 @@
 {
   "name": "themeizer-cli",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "CLI for themeizer",
-  "main": "./dist/src/index.js",
-  "bin": "./dist/src/index.js",
+  "main": "./dist/index.js",
+  "bin": "./dist/index.js",
   "devDependencies": {
     "@types/glob": "7.2.0",
     "@types/node": "14.14.21",
@@ -24,11 +24,11 @@
   "scripts": {
     "dev": "ts-node src/index.ts",
     "build": "tsc --build",
-    "lint:fix": "eslint ./**/*.ts --fix",
     "lint": "eslint ./**/*.ts"
   },
   "license": "MIT",
   "dependencies": {
+    "glob": "7.2.0",
     "themeizer": "0.1.0"
   },
   "repository": {
