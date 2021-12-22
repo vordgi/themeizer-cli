@@ -50,7 +50,7 @@ const hexToRegExpRow = (hex: string) => {
 (async () => {
     let config;
     if (args['--config']) {
-        const configPath = path.join(process.cwd(), args['--config']);
+        const configPath = path.resolve(process.cwd(), args['--config']);
         config = require(configPath);
     } else if (args['--url'] && args['--theme'] && args['--headers']) {
         config = {
