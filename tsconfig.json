@@ -20,5 +20,6 @@
         "strict": true,
         "target": "esnext",
         "allowSyntheticDefaultImports": true
-    }
+    },
+    "include": ["src/index.ts", "src/lib"]
 }

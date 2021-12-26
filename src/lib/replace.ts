@@ -2,9 +2,9 @@ import type { ColorObj } from 'themeizer/dist/types/themeizer';
 import getGradientReplacer from './getGradientReplacer';
 import getRowColorRexExp from './getRowColorRexExp';
 
-const replace = async (row: string, colorsSorted: ColorObj[]) => {
+const replace = (row: string, themeColorsSorted: ColorObj[]) => {
     let newRow = row;
-    colorsSorted.forEach((color) => {
+    themeColorsSorted.forEach((color) => {
         const regexRowFixed = getRowColorRexExp(color.origValue);
         let regex: RegExp;
         if (color.type === 'linear') {

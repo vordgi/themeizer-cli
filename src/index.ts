@@ -4,8 +4,9 @@ import glob from 'glob';
 import fs from 'fs/promises';
 import path from 'path';
 import arg from 'arg';
-import getSortedColors from './lib/getSortedColors';
+import getSortedThemeColors from './lib/getSortedThemeColors';
 import replace from './lib/replace';
+import loadColors from './lib/loadColors';
 
 const args = arg({
 	'--help': Boolean,
@@ -48,7 +49,8 @@ if (args['--help']) {
     } else {
         throw new Error('Please, provide configuration options. Use "--help" option for more information');
     }
-    const colorsSorted = await getSortedColors(config);
+    const colors = await loadColors(config);
+    const colorsSorted = getSortedThemeColors(colors, config.theme);
 
     glob("**/*.+(css|sass|scss|styl)", { cwd: process.cwd(), absolute: true, realpath: true, ignore: [] }, async (_er, files) => {
         const filesCount = files.length;
