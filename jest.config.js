@@ -3,7 +3,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   collectCoverageFrom: ["src/lib/**/*.{js,ts}", "!src/lib/loadColors.ts"],
-  coverageReporters: ["text-summary"],
+  coverageReporters: ["text"],
   testRegex: "src/tests/.*\\.test\\.ts$",
   coverageThreshold: {
     global: {

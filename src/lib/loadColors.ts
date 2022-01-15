@@ -7,7 +7,8 @@ const loadColors = async (config: Options) => {
     new ThemeizerPlugin(config);
 
     const themeizer = await Themeizer.init();
-    const colors = themeizer.cssVariablesObj;
+    if (!themeizer) throw new Error('Can not load colors');
+    const colors = themeizer.data;
     return colors;
 }
 

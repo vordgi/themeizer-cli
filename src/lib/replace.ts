@@ -1,11 +1,11 @@
-import type { ColorObj } from 'themeizer/dist/types/themeizer';
+import type { SortedThemeColor } from '../types';
 import getGradientReplacer from './getGradientReplacer';
 import getRowColorRexExp from './getRowColorRexExp';
 
-const replace = (row: string, themeColorsSorted: ColorObj[]) => {
+const replace = (row: string, themeColorsSorted: SortedThemeColor[]) => {
     let newRow = row;
     themeColorsSorted.forEach((color) => {
-        const regexRowFixed = getRowColorRexExp(color.origValue);
+        const regexRowFixed = getRowColorRexExp(color.value);
         let regex: RegExp;
         if (color.type === 'linear') {
             regex = new RegExp(`linear-gradient\\(([^,]*, ?)?${regexRowFixed}\\)`, 'gm');
@@ -13,9 +13,12 @@ const replace = (row: string, themeColorsSorted: ColorObj[]) => {
         } else if (color.type === 'radial') {
             regex = new RegExp(`radial-gradient\\(([^,]*, ?)?${regexRowFixed}\\)`, 'gm');
             newRow = newRow.replace(regex, getGradientReplacer(color.name));
+        } else if (color.themeType === 'shared') {
+            regex = new RegExp(regexRowFixed, 'gm');
+            newRow = newRow.replace(regex, `var(--${color.themeType}-${color.name})`);
         } else {
             regex = new RegExp(regexRowFixed, 'gm');
-            newRow = newRow.replace(regex, `var(${color.name})`);
+            newRow = newRow.replace(regex, `var(--${color.name})`);
         }
     });
 
