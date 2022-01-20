@@ -1,6 +1,6 @@
 {
   "name": "themeizer-cli",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "CLI for themeizer",
   "main": "./dist/index.js",
   "bin": "./dist/index.js",
