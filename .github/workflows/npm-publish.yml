@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Test
-        run: npm run test
+        run: npm run test -- --collectCoverage
       - name: Build
         run: npm run build
       - name: Publish
