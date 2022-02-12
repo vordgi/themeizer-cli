@@ -1,7 +1,7 @@
 {
   "name": "themeizer-cli",
-  "version": "0.3.3",
-  "description": "CLI for themeizer",
+  "version": "0.3.4",
+  "description": "A cli tool to automatically replace published (by \"Themeizer\" plugin) colors in style files with a css variable",
   "main": "./dist/index.js",
   "bin": "./dist/index.js",
   "devDependencies": {
@@ -45,5 +45,15 @@
     "email": "vordgi1@gmail.com",
     "url": "https://github.com/vordgi/"
   },
-  "keywords": []
+  "keywords": [
+    "themeizer",
+    "theming",
+    "css-variables",
+    "variables",
+    "colors",
+    "css",
+    "styles",
+    "tools",
+    "cli"
+  ]
 }

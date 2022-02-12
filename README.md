@@ -1,5 +1,5 @@
 # Themeizer CLI
-A package for automatically replacing linear colors with css variables.
+A cli tool to automatically replace published colors (as well as linear and radial gradients) in style files with a css variable
 
 Themeizer ecosystem helper package.
 
@@ -45,6 +45,13 @@ themeizer-cli -c ./themeizer.config.json
 ```bash
 themeizer-cli -u "https://example.com/api/themes" -t "light" -h {"token":"example-token"}
 ```
+
+## Themeizer ecosystem
+* [Figma plugin "Themeizer"](https://www.figma.com/community/plugin/1065764293242137356/Themeizer) - plugin for changing themes in design and publishing them in the cloud;
+* [themeizer](https://www.npmjs.com/package/themeizer) - package for embedding themes from "Themeizer" Figma plugin at the server level or at build stage;
+* [next-themeizer](https://www.npmjs.com/package/next-themeizer) - package for adding "Themeizer" ecosystem interaction configuration to your next.js application;
+* [themeizer-cli](https://www.npmjs.com/package/themeizer-cli) - a package to automatically replace published colors (as well as linear and radial gradients) in style files with a css variable;
+* [stylelint-themeizer](https://www.npmjs.com/package/stylelint-themeizer) - stylelint plugin for "Themeizer" ecosystem.
 
 ## License
 
